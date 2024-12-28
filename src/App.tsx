@@ -83,7 +83,7 @@ function App() {
   const DeleteOverlay = ({ id }: { id: number }) => {
     return (
       <div className="fixed w-full h-[100vh] bg-gray-200/50 flex items-center justify-center z-10">
-        <div className="bg-white w-[30%] p-4 shadow-xl rounded-xl flex items-center justify-center flex-col">
+        <div className="bg-white w-[30%] 2xl:w-[35%] lg:w-1/2 md:w-[70%] sm:w-[90%] p-4 shadow-xl rounded-xl flex items-center justify-center flex-col">
           <h1 className="text-3xl text-center">
             {`  Are you sure you want to delete this task ID: ${id}?`}
           </h1>
@@ -112,9 +112,9 @@ function App() {
   return (
     <>
       {isOpenDelete && deleteId !== null && <DeleteOverlay id={deleteId} />}
-      <div className="w-full h-[100vh] flex flex-col px-8 py-4 gap-4">
+      <div className="w-full h-[100vh] flex flex-col px-8 py-4 gap-4 lg:px-4">
         <div className="w-full flex items-center justify-between">
-          <h1 className="text-7xl font-bold mb-4 bg-gradient-to-r from-[#F90B0B] via-[#209C94] to-[#69B72B] bg-clip-text text-transparent">
+          <h1 className="text-7xl sm:text-5xl xs:text-3xl font-bold bg-gradient-to-r from-[#F90B0B] via-[#209C94] to-[#69B72B] bg-clip-text text-transparent">
             Sticky Wall
           </h1>
           <button
@@ -122,13 +122,13 @@ function App() {
               localStorage.clear();
               setTodos([]);
             }}
-            className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+            className="px-4 py-2 xs:text-sm font-semibold xs:p-2 bg-red-500 text-white rounded hover:bg-red-600"
           >
             Clear
           </button>
         </div>
         <div className="container-list flex-1 border border-gray-300 rounded-lg p-4 shadow-md overflow-y-auto">
-          <div className="columns-4 gap-4">
+          <div className="columns-4 gap-4 2xl:columns-3 xl:columns-2 sm:columns-1">
             {todos &&
               todos.map((todo: any) => (
                 <div
@@ -187,8 +187,10 @@ function App() {
                       </>
                     ) : (
                       <>
-                        <h2 className="text-4xl font-semibold">{todo.title}</h2>
-                        <p className="text-gray-700 text-2xl min-h-[200px]">
+                        <h2 className="text-4xl font-semibold xs:text-2xl">
+                          {todo.title}
+                        </h2>
+                        <p className="text-gray-700 text-2xl xs:text-lg min-h-[200px]">
                           {todo.description}
                         </p>
                       </>
